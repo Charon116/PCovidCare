@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         gender: DataTypes.STRING,
         description: DataTypes.TEXT,
         roleId: DataTypes.INTEGER,
-        isActive: DataTypes.TINYINT(1),
+        isActive: DataTypes.INTEGER,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE,

@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         year: DataTypes.STRING,
         address: DataTypes.TEXT,
         description: DataTypes.TEXT,
-        isSentForms:DataTypes.BOOLEAN,
-        isTakeCare: DataTypes.BOOLEAN,
+        isSentForms:DataTypes.INTEGER,
+        isTakeCare: DataTypes.INTEGER,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE

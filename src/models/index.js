@@ -12,12 +12,13 @@ let sequelize;
 if (config.use_env_variable) {
     sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
         host: process.env.DB_HOST,
-        dialect: 'mysql',
+        dialect: 'postgres',
         operatorsAliases: 0,
         dialectOptions: {
-            dateStrings: true,
-            typeCast: true,
-            timezone: "+07:00"
+            ssl : {
+                require: true,
+                rejectUnauthorized: false
+            }
         },
         timezone: "+07:00",
         logging: false,
@@ -26,12 +27,13 @@ if (config.use_env_variable) {
 } else {
     sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
         host: process.env.DB_HOST,
-        dialect: 'mysql',
+        dialect: 'postgres',
         operatorsAliases: 0,
         dialectOptions: {
-            dateStrings: true,
-            typeCast: true,
-            timezone: "+07:00",
+            ssl : {
+                require: true,
+                rejectUnauthorized: false
+            }
         },
         timezone: "+07:00",
         logging: false,

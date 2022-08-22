@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         name: DataTypes.STRING,
         phone: DataTypes.STRING,
         content: DataTypes.TEXT,
-        status: DataTypes.BOOLEAN,
+        status: DataTypes.INTEGER,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE,

@@ -13,15 +13,17 @@ let sequelize = new Sequelize(
     process.env.DB_PASSWORD,
     {
         host: process.env.DB_HOST,
-        dialect: "mysql",
-        storage: "./session.mysql",
+        dialect: "postgres",
+        //storage: "./session.mysql",
         logging: false,
-
+        
         dialectOptions: {
-            "dateStrings": true,
-            "typeCast": true,
-            "timezone": "+07:00"
+            ssl : {
+                require: true,
+                rejectUnauthorized: false
+            }
         },
+        operatorsAliases: 0,
         timezone: "+07:00"
     }
     );

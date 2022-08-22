@@ -38,8 +38,8 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             isActive: {
-                type: Sequelize.TINYINT(1),
-                defaultValue: true
+                type: Sequelize.INTEGER,
+                
             },
             createdAt: {
                 allowNull: false,

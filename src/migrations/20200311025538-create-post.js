@@ -34,7 +34,7 @@ module.exports = {
                 allowNull: false,
             },
             confirmByDoctor: {
-                type: Sequelize.TINYINT(1),
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             image: {

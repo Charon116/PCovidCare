@@ -44,14 +44,13 @@ module.exports = {
                 type: Sequelize.TEXT
             },
             isSentForms: {
-                type: Sequelize.BOOLEAN,
+                type: Sequelize.INTEGER,
                 allowNull: false,
-                defaultValue: false
+
             },
             isTakeCare: {
-                type: Sequelize.BOOLEAN,
+                type: Sequelize.INTEGER,
                 allowNull: false,
-                defaultValue: false
             },
             createdAt: {
                 allowNull: false,

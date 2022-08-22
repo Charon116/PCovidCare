@@ -27,7 +27,7 @@ module.exports = {
                 type: Sequelize.TEXT
             },
             status: {
-                type: Sequelize.BOOLEAN,
+                type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: false
             },
