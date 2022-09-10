@@ -41,7 +41,7 @@ let getHomePage = async (req, res) => {
 };
 
 let getUserPage = (req, res) => {
-    let currentMonth = new Date().getMonth() +1 ;
+    let currentMonth = new Date().getMonth() + 1;
     res.render("main/users/home.ejs", {
         user: req.user,
         currentMonth: currentMonth
@@ -56,7 +56,7 @@ let getDetailSpecializationPage = async (req, res) => {
         let doctors = await doctorService.getDoctorsForSpecialization(req.params.id, currentDate);
         let sevenDaySchedule = [];
         for (let i = 0; i < 5; i++) {
-            let date = moment(new Date()).add(i, 'days').locale('en').format('dddd - DD/MM/YYYY');
+            let date = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM/YYYY');
             sevenDaySchedule.push(date);
         }
 
@@ -81,7 +81,7 @@ let getDetailDoctorPage = async (req, res) => {
         let currentDate = moment().format('DD/MM/YYYY');
         let sevenDaySchedule = [];
         for (let i = 0; i < 5; i++) {
-            let date = moment(new Date()).add(i, 'days').locale('en').format('dddd - DD/MM/YYYY');
+            let date = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM/YYYY');
             sevenDaySchedule.push(date);
         }
 
@@ -127,7 +127,7 @@ let getDetailClinicPage = async (req, res) => {
         let currentDate = moment().format('DD/MM/YYYY');
         let sevenDaySchedule = [];
         for (let i = 0; i < 5; i++) {
-            let date = moment(new Date()).add(i, 'days').locale('en').format('dddd - DD/MM/YYYY');
+            let date = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM/YYYY');
             sevenDaySchedule.push(date);
         }
         let object = await clinicService.getDetailClinicPage(req.params.id, currentDate);
@@ -315,35 +315,35 @@ let postSearchHomePage = async (req, res) => {
 };
 
 let getPageAllClinics = async (req, res) => {
-    try{
+    try {
         let clinics = await homeService.getDataPageAllClinics();
 
-        return res.render("main/homepage/allClinics.ejs",{
+        return res.render("main/homepage/allClinics.ejs", {
             clinics: clinics
         })
-    }catch (e) {
+    } catch (e) {
         console.log(e);
     }
 };
 
-let getPageAllDoctors = async (req, res)=>{
-    try{
+let getPageAllDoctors = async (req, res) => {
+    try {
         let doctors = await homeService.getDataPageAllDoctors();
-        return res.render("main/homepage/allDoctors.ejs",{
+        return res.render("main/homepage/allDoctors.ejs", {
             doctors: doctors
         })
-    }catch (e) {
+    } catch (e) {
         console.log(e);
     }
 };
 
-let getPageAllSpecializations =async (req, res)=>{
-    try{
+let getPageAllSpecializations = async (req, res) => {
+    try {
         let specializations = await homeService.getDataPageAllSpecializations();
-        return res.render("main/homepage/allSpecializations.ejs",{
+        return res.render("main/homepage/allSpecializations.ejs", {
             specializations: specializations
         })
-    }catch (e) {
+    } catch (e) {
         console.log(e);
     }
 };
