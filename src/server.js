@@ -50,4 +50,4 @@ app.use(passPort.session());
 initRoutes(app);
 
 let port = process.env.PORT;
-app.listen(port || 9898, () => console.log(`P-Covid Care app is running on port ${port}!`));
+app.listen(port || 9696, () => console.log(`P-Covid Care app is running on port ${port}!`));

@@ -1,16 +1,19 @@
 {
     "development": {
-        "username": "noqcttyfkbtyhg",
-        "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
-        "database": "dardbkepg8the",
-        "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
-        "dialect": "postgres",
+        "username": "root",
+        "password": "05081964",
+        "database": "doctorcare",
+        "host": "localhost",
+        "dialect": "mysql",
         "logging": false,
         "query": {
             "raw": true
         },
         "operatorsAliases": 0,
         "dialectOptions": {
+            "dateStrings": true,
+            "typeCast": true,
+            "timezone": "+07:00",
             "ssl" : {
                 "require": true,
                 "rejectUnauthorized": false
