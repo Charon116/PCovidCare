@@ -1,35 +1,44 @@
 {
   "development": {
-      "username": "noqcttyfkbtyhg",
-      "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
-      "database": "dardbkepg8the",
-      "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
-      "dialect": "postgres",
-      "logging": false,
-      "query": {
-          "raw": true
-      },
-      "operatorsAliases": 0,
-      "dialectOptions": {
-          "ssl" : {
-              "require": true,
-              "rejectUnauthorized": false
-          }
-      },
-      "timezone": "+07:00"
+    "username": "noqcttyfkbtyhg",
+    "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
+    "database": "dardbkepg8the",
+    "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "logging": false,
+    "query": {
+      "raw": true
+    },
+    "operatorsAliases": 0,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "timezone": "+07:00"
   },
   "test": {
-      "dialect": "mysql",
-      "operatorsAliases": 0
+    "dialect": "mysql",
+    "operatorsAliases": 0
   },
   "production": {
-      "dialect": "mysql",
-      "operatorsAliases": 0,
-      "dialectOptions": {
-          "dateStrings": true,
-          "typeCast": true,
-          "timezone": "+07:00"
-      },
-      "timezone": "+07:00"
+    "username": "noqcttyfkbtyhg",
+    "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
+    "database": "dardbkepg8the",
+    "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "logging": false,
+    "query": {
+      "raw": true
+    },
+    "operatorsAliases": 0,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "timezone": "+07:00"
   }
 }
