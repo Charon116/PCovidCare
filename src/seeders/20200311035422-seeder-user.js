@@ -10,7 +10,7 @@ module.exports = {
                 address: 'New York',
                 phone: '088456732',
                 avatar: 'admin.png',
-                roleId: 1,
+                RoleId: 1,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -21,7 +21,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor3.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -32,7 +32,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor4.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -43,7 +43,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor1.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -54,7 +54,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor2.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -65,7 +65,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor3.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -76,7 +76,7 @@ module.exports = {
                 address: 'LA',
                 phone: '088456735',
                 avatar: 'doctor4.jpg',
-                roleId: 2,
+                RoleId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -87,7 +87,7 @@ module.exports = {
                 address: 'Arizona',
                 phone: '088456736',
                 avatar: 'supporter.png',
-                roleId: 3,
+                RoleId: 3,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -98,7 +98,7 @@ module.exports = {
                 address: 'Arizona',
                 phone: '088456736',
                 avatar: 'supporter.png',
-                roleId: 3,
+                RoleId: 3,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -109,7 +109,7 @@ module.exports = {
                 address: 'Arizona',
                 phone: '088456736',
                 avatar: 'supporter.png',
-                roleId: 3,
+                RoleId: 3,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -120,7 +120,7 @@ module.exports = {
                 address: 'Arizona',
                 phone: '088456736',
                 avatar: 'supporter.png',
-                roleId: 3,
+                RoleId: 3,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },

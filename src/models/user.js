@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         avatar: DataTypes.STRING,
         gender: DataTypes.STRING,
         description: DataTypes.TEXT,
-        roleId: DataTypes.INTEGER,
+        RoleId: DataTypes.INTEGER,
         isActive: DataTypes.INTEGER,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE,
     }, {});
-    User.associate = function(models) {
-        models.User.belongsTo(models.Role, { foreignKey: 'roleId' });
+    User.associate = function (models) {
+        models.User.belongsTo(models.Role, { foreignKey: 'RoleId' });
         models.User.hasOne(models.Post);
         models.User.hasOne(models.Doctor_User, { foreignKey: 'doctorId' });
         models.User.hasMany(models.Patient, { foreignKey: 'doctorId' });

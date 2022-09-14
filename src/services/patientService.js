@@ -14,7 +14,7 @@ let getInfoBooking = (id) => {
         try {
             let patient = await db.Patient.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'doctorId' ]
+                attributes: ['id', 'doctorId']
             });
 
             if (!patient) {
@@ -22,7 +22,7 @@ let getInfoBooking = (id) => {
             }
             let doctor = await db.User.findOne({
                 where: { id: patient.doctorId },
-                attributes: [ 'name', 'avatar' ]
+                attributes: ['name', 'avatar']
             });
 
             patient.setDataValue('doctorName', doctor.name);
@@ -41,28 +41,28 @@ let getForPatientsTabs = () => {
                 where: {
                     statusId: statusNewId
                 },
-                order: [ [ 'updatedAt', 'DESC' ] ],
+                order: [['updatedAt', 'DESC']],
             });
 
             let pendingPatients = await db.Patient.findAll({
                 where: {
                     statusId: statusPendingId
                 },
-                order: [ [ 'updatedAt', 'DESC' ] ],
+                order: [['updatedAt', 'DESC']],
             });
 
             let confirmedPatients = await db.Patient.findAll({
                 where: {
                     statusId: statusSuccessId
                 },
-                order: [ [ 'updatedAt', 'DESC' ] ],
+                order: [['updatedAt', 'DESC']],
             });
 
             let canceledPatients = await db.Patient.findAll({
                 where: {
                     statusId: statusFailedId
                 },
-                order: [ [ 'updatedAt', 'DESC' ] ],
+                order: [['updatedAt', 'DESC']],
             });
 
             resolve({
@@ -87,7 +87,7 @@ let changeStatusPatient = (data, logs) => {
 
             let doctor = await db.User.findOne({
                 where: { id: patient.doctorId },
-                attributes: [ 'name', 'avatar' ],
+                attributes: ['name', 'avatar'],
             });
 
 
@@ -150,7 +150,7 @@ let isBookAble = async (doctorId, date, time) => {
             date: date,
             time: time
         },
-        attributes: [ 'id', 'doctorId', 'date', 'time', 'maxBooking', 'sumBooking' ]
+        attributes: ['id', 'doctorId', 'date', 'time', 'maxBooking', 'sumBooking']
     });
 
     if (schedule) {
@@ -180,7 +180,7 @@ let createNewPatient = (data) => {
 
                     let doctor = await db.User.findOne({
                         where: { id: patient.doctorId },
-                        attributes: [ 'name', 'avatar' ]
+                        attributes: ['name', 'avatar']
                     });
 
                     //update logs
@@ -245,7 +245,7 @@ let getLogsPatient = (id) => {
                     if (log.supporterId) {
                         let supporter = await db.User.findOne({
                             where: { id: log.supporterId },
-                            attributes: [ 'name' ]
+                            attributes: ['name']
                         });
                         log.setDataValue('supporterName', supporter.name);
                     } else {

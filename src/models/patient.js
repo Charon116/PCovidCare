@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         year: DataTypes.STRING,
         address: DataTypes.TEXT,
         description: DataTypes.TEXT,
-        isSentForms:DataTypes.INTEGER,
+        isSentForms: DataTypes.INTEGER,
         isTakeCare: DataTypes.INTEGER,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE
     }, {});
-    Patient.associate = function(models) {
+    Patient.associate = function (models) {
         models.Patient.belongsTo(models.User, { foreignKey: 'doctorId' });
         models.Patient.belongsTo(models.Status, { foreignKey: 'statusId' });
         models.Patient.hasOne(models.ExtraInfo);

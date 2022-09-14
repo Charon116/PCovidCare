@@ -25,7 +25,9 @@ let getHomePage = async (req, res) => {
         let specializations = await homeService.getSpecializations();
         let clinics = await homeService.getClinics();
         let doctors = await userService.getInfoDoctors();
-        let posts = await homeService.getPosts(LIMIT_POST);
+        console.log("Check doctor", doctors);
+        //let posts = await homeService.getPosts(LIMIT_POST);
+
         return res.render("main/homepage/homepage.ejs", {
             user: req.user,
             specializations: specializations,
@@ -33,7 +35,9 @@ let getHomePage = async (req, res) => {
             doctors: doctors,
             posts: posts,
             pageId: process.env.PAGE_ID
+
         });
+
     } catch (e) {
         console.log(e);
         return res.render('main/homepage/pageNotFound.ejs');

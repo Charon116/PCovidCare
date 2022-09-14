@@ -28,7 +28,6 @@
     "database": "dardbkepg8the",
     "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "use_env_variable": "postgres://noqcttyfkbtyhg:e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54@ec2-54-86-106-48.compute-1.amazonaws.com:5432/dardbkepg8the",
     "logging": false,
     "query": {
       "raw": true

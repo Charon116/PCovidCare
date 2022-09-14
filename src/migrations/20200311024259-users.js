@@ -33,13 +33,13 @@ module.exports = {
             description: {
                 type: Sequelize.TEXT
             },
-            roleId: {
+            RoleId: {
                 allowNull: false,
                 type: Sequelize.INTEGER
             },
             isActive: {
                 type: Sequelize.INTEGER,
-                
+
             },
             createdAt: {
                 allowNull: false,

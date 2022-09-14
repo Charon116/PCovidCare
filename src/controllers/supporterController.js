@@ -56,8 +56,8 @@ let postCreatePost = async (req, res) => {
 let getManagePosts = async (req, res) => {
     try {
         let role = "";
-        if(req.user){
-            if(req.user.roleId === 1) role = "admin";
+        if (req.user) {
+            if (req.user.RoleId === 1) role = "admin";
         }
         let object = await supporterService.getPostsPagination(1, +process.env.LIMIT_GET_POST, role);
         return res.render('main/users/admins/managePost.ejs', {

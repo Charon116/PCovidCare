@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         updatedAt: DataTypes.DATE,
         deletedAt: DataTypes.DATE
     }, {});
-    Role.associate = function(models) {
+    Role.associate = function (models) {
         models.Role.hasOne(models.User);
     };
     return Role;

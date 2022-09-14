@@ -16,20 +16,21 @@ let createNewUser = (user) => {
     return new Promise(async (resolve, reject) => {
         try {
             let isEmailExist = await checkEmailUser(user);
-            if(isEmailExist){
+            if (isEmailExist) {
                 resolve("This email ${user.email} is already exist. Please try another email");
-            }else{
+            } else {
                 user.password = bcrypt.hashSync(user.password, salt);
-                
+
                 await db.User.create({
                     name: user.name,
                     email: user.email,
                     password: user.password,
-                    roleId: '3'});
+                    RoleId: '3'
+                });
                 resolve("Done!");
             }
 
-            
+
         } catch (e) {
             reject(e);
         }
@@ -40,11 +41,11 @@ let checkEmailUser = (userCheck) => {
     return new Promise(async (resolve, reject) => {
         try {
             let currentUser = await db.User.findOne({
-                where: { 
-                    email: userCheck.email 
+                where: {
+                    email: userCheck.email
                 },
             });
-            if(currentUser) resolve(true);
+            if (currentUser) resolve(true);
             resolve(false);
         } catch (e) {
             reject(e);
@@ -53,7 +54,7 @@ let checkEmailUser = (userCheck) => {
 }
 
 let createDoctor = (doctor) => {
-    doctor.roleId = 2;
+    doctor.RoleId = 2;
     doctor.password = bcrypt.hashSync(doctor.password, salt);
     return new Promise((async (resolve, reject) => {
         let newDoctor = await db.User.create(doctor);
@@ -74,12 +75,13 @@ let getInfoDoctors = () => {
     return new Promise((async (resolve, reject) => {
         try {
             let doctors = await db.User.findAll({
-                where: { roleId: 2 },
+                where: { RoleId: 2 },
                 include: [
                     { model: db.Doctor_User, required: false },
                     { model: db.Patient, required: false, where: { statusId: 1 } }
                 ]
             });
+            console.log("Check doctors: ", doctors);
             await Promise.all(doctors.map(async (doctor) => {
                 if (doctor.Doctor_User) {
                     let clinic = await helper.getClinicById(doctor.Doctor_User.clinicId);
@@ -125,7 +127,7 @@ let findUserById = (id) => {
         try {
             let user = await db.User.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'name', 'email', 'address', 'phone','gender', 'description', 'avatar', 'roleId', 'isActive' ]
+                attributes: ['id', 'name', 'email', 'address', 'phone', 'gender', 'description', 'avatar', 'RoleId', 'isActive']
             });
             resolve(user);
         } catch (e) {
@@ -154,47 +156,47 @@ let getInfoStatistical = (month) => {
             let endDate = Date.parse(stringToDate(`31/${month}/2022`, "dd/MM/yyyy", "/"));
 
             let patients = await db.Patient.findAndCountAll({
-                attributes: [ 'id','doctorId' ],
+                attributes: ['id', 'doctorId'],
                 where: {
                     createdAt: {
-                        [Op.between]: [ startDate, endDate ],
+                        [Op.between]: [startDate, endDate],
                     },
                 }
             });
 
             let doctors = await db.User.findAndCountAll({
-                attributes: [ 'id' ],
+                attributes: ['id'],
                 where: {
-                    roleId: 2,
+                    RoleId: 2,
                     createdAt: {
-                        [Op.between]: [ startDate, endDate ],
+                        [Op.between]: [startDate, endDate],
                     }
                 }
             });
 
             let posts = await db.Post.findAndCountAll({
-                attributes: [ 'id','writerId' ],
+                attributes: ['id', 'writerId'],
                 where: {
                     forClinicId: -1,
                     forSpecializationId: -1,
                     forDoctorId: -1,
                     createdAt: {
-                        [Op.between]: [ startDate, endDate ],
+                        [Op.between]: [startDate, endDate],
                     }
                 }
             });
 
             let bestDoctor = '';
 
-            if(+patients.count > 0){
+            if (+patients.count > 0) {
                 let bestDoctorIdArr = _(patients.rows)
-                .groupBy('doctorId')
-                .map((v, doctorId) => ({
-                    doctorId,
-                    patientId: _.map(v, 'id')
-                }))
-                .value();
-                let doctorObject = _.maxBy(bestDoctorIdArr, function(o) {
+                    .groupBy('doctorId')
+                    .map((v, doctorId) => ({
+                        doctorId,
+                        patientId: _.map(v, 'id')
+                    }))
+                    .value();
+                let doctorObject = _.maxBy(bestDoctorIdArr, function (o) {
                     return o.patientId.length;
                 });
                 bestDoctor = await db.User.findOne({
@@ -207,15 +209,15 @@ let getInfoStatistical = (month) => {
             }
 
             let bestSupporter = '';
-            if(+posts.count > 0){
+            if (+posts.count > 0) {
                 let bestSupporterIdArr = _(posts.rows)
-                .groupBy('writerId')
-                .map((v, writerId) => ({
-                    writerId,
-                    postId: _.map(v, 'id')
-                }))
-                .value();
-                let supporterObject = _.maxBy(bestSupporterIdArr, function(o) {
+                    .groupBy('writerId')
+                    .map((v, writerId) => ({
+                        writerId,
+                        postId: _.map(v, 'id')
+                    }))
+                    .value();
+                let supporterObject = _.maxBy(bestSupporterIdArr, function (o) {
                     return o.postId.length;
                 });
                 bestSupporter = await db.User.findOne({
@@ -242,19 +244,19 @@ let getInfoStatistical = (month) => {
 
 let getInfoDoctorChart = (month) => {
     return new Promise(async (resolve, reject) => {
-        try{
+        try {
             let startDate = Date.parse(stringToDate(`01/${month}/2022`, "dd/MM/yyyy", "/"));
             let endDate = Date.parse(stringToDate(`31/${month}/2022`, "dd/MM/yyyy", "/"));
             let patients = await db.Patient.findAndCountAll({
-                attributes: [ 'id','doctorId','statusId','isSentForms' ],
+                attributes: ['id', 'doctorId', 'statusId', 'isSentForms'],
                 where: {
                     createdAt: {
-                        [Op.between]: [ startDate, endDate ],
+                        [Op.between]: [startDate, endDate],
                     },
                 }
             });
-            resolve({patients: patients})
-        }catch (e) {
+            resolve({ patients: patients })
+        } catch (e) {
             reject(e);
         }
     });
@@ -274,7 +276,7 @@ let createAllDoctorsSchedule = () => {
 
             let doctors = await db.User.findAll({
                 where: {
-                    roleId: 2
+                    RoleId: 2
                 },
                 attributes: ['id', 'name'],
                 raw: true
@@ -292,9 +294,9 @@ let createAllDoctorsSchedule = () => {
                 }
             })
 
-            if(check && check.length > 0) isCreatedBefore = true;
+            if (check && check.length > 0) isCreatedBefore = true;
 
-            if(!isCreatedBefore){
+            if (!isCreatedBefore) {
                 if (doctors && doctors.length > 0) {
                     await Promise.all(
                         doctors.map((doctor) => {
@@ -314,7 +316,7 @@ let createAllDoctorsSchedule = () => {
                     )
                 }
                 resolve("Appointments are created successful (in 3 days). Please check your database (schedule table)")
-            }else {
+            } else {
                 resolve("Appointments are duplicated. Please check your database (schedule table)")
             }
         } catch (e) {

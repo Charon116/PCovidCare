@@ -13,7 +13,7 @@ let sequelize = new Sequelize(
     process.env.DB_PASSWORD,
     {
         host: process.env.DB_HOST,
-        dialect: "mysql",
+        dialect: "postgres",
         //storage: "./session.mysql",
         logging: false,
         
@@ -26,7 +26,17 @@ let sequelize = new Sequelize(
         operatorsAliases: 0,
         timezone: "+07:00"
     }
-    );
+
+);
+
+let connectDB = async () => {
+    try{
+        await sequelize.authenticate();
+        console.log("Connect successfully");
+    }catch(error){
+        console.log("Connect failure", error);
+    }
+}
 
 let sessionStore = new SequelizeStore({
     db: sequelize

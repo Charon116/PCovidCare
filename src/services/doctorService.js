@@ -24,7 +24,7 @@ let getDoctorWithSchedule = (id, currentDate) => {
             let doctor = await db.User.findOne({
                 where: { id: id },
                 attributes: {
-                    exclude: [ 'password' ]
+                    exclude: ['password']
                 },
                 include: [
                     {
@@ -34,12 +34,12 @@ let getDoctorWithSchedule = (id, currentDate) => {
                             sumBooking: { [Op.lt]: maxBooking }
                         }
                     }, {
-                        model: db.Doctor_User, attributes: [ 'specializationId', 'clinicId' ]
+                        model: db.Doctor_User, attributes: ['specializationId', 'clinicId']
                     },
                     {
                         model: db.Comment,
                         where: { status: true },
-                        attributes: [ 'id', 'timeBooking', 'dateBooking', 'name', 'content', 'createdAt', 'status' ],
+                        attributes: ['id', 'timeBooking', 'dateBooking', 'name', 'content', 'createdAt', 'status'],
                         required: false
                     }
                 ]
@@ -55,7 +55,7 @@ let getDoctorWithSchedule = (id, currentDate) => {
             let clinicId = doctor.Doctor_User.clinicId;
             let clinic = await db.Clinic.findOne({
                 where: { id: clinicId },
-                attributes: [ 'address' ]
+                attributes: ['address']
             });
 
             let date = new Date();
@@ -87,8 +87,8 @@ let getPostForDoctor = (id) => {
         try {
             let post = await db.Post.findOne({
                 where: { forDoctorId: id },
-                order: [ [ 'createdAt', 'DESC' ] ],
-                attributes: [ 'id', 'title', 'contentHTML' ]
+                order: [['createdAt', 'DESC']],
+                attributes: ['id', 'title', 'contentHTML']
             });
             resolve(post);
         } catch (e) {
@@ -166,7 +166,7 @@ let getDoctorById = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
             let doctor = await db.User.findOne({
-                where: { id: id, roleId: 2 }
+                where: { id: id, RoleId: 2 }
             });
             resolve(doctor);
         } catch (e) {
@@ -191,10 +191,10 @@ let getDoctorsForSpecialization = (id, date) => {
         try {
             let doctors = await db.Doctor_User.findAll({
                 where: { specializationId: id },
-                attributes: [ 'specializationId' ],
+                attributes: ['specializationId'],
                 include: {
                     model: db.User,
-                    attributes: [ 'id', 'name', 'avatar', 'address', 'description' ]
+                    attributes: ['id', 'name', 'avatar', 'address', 'description']
                 }
             });
 
@@ -204,7 +204,7 @@ let getDoctorsForSpecialization = (id, date) => {
                     where: {
                         doctorId: doctor.User.id, date: date, sumBooking: { [Op.lt]: maxBooking }
                     },
-                    attributes: [ 'id', 'date', 'time' ]
+                    attributes: ['id', 'date', 'time']
                 });
 
 
@@ -236,18 +236,18 @@ let getInfoDoctorById = (id) => {
         try {
             let doctor = await db.User.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'name', 'avatar', 'address', 'phone', 'description' ],
+                attributes: ['id', 'name', 'avatar', 'address', 'phone', 'description'],
                 include: {
                     model: db.Doctor_User,
-                    attributes: [ 'clinicId', 'specializationId' ]
+                    attributes: ['clinicId', 'specializationId']
                 }
             });
 
             let specialization = await db.Specialization.findOne({
-                where: { id: doctor.Doctor_User.specializationId }, attributes: [ 'name' ]
+                where: { id: doctor.Doctor_User.specializationId }, attributes: ['name']
             });
             let clinic = await db.Clinic.findOne({
-                where: { id: doctor.Doctor_User.clinicId }, attributes: [ 'name' ]
+                where: { id: doctor.Doctor_User.clinicId }, attributes: ['name']
             });
 
             doctor.setDataValue('specializationName', specialization.name);
@@ -331,8 +331,8 @@ let getPatientsBookAppointment = (data) => {
                     dateBooking: data.date,
                     statusId: statusSuccessId
                 },
-                order: [ [ 'updatedAt', 'ASC' ] ],
-                attributes: [ 'id', 'name', 'gender', 'timeBooking', 'description', 'isSentForms' ]
+                order: [['updatedAt', 'ASC']],
+                attributes: ['id', 'name', 'gender', 'timeBooking', 'description', 'isSentForms']
             });
             resolve(patients);
         } catch (e) {
@@ -361,7 +361,7 @@ let getPlacesForDoctor = () => {
     return new Promise(async (resolve, reject) => {
         try {
             let places = await db.Place.findAll({
-                attributes: [ 'id', 'name' ]
+                attributes: ['id', 'name']
             });
             resolve(places);
         } catch (e) {
@@ -380,7 +380,7 @@ let sendFormsForPatient = (id, files) => {
             let patient = await patientService.getDetailPatient(id);
             let doctor = await db.User.findOne({
                 where: { id: patient.doctorId },
-                attributes: [ 'name', 'avatar' ]
+                attributes: ['name', 'avatar']
             });
             let name = removeAccents(patient.name).split(' ').join('').toLowerCase();
             let phone = patient.phone.substring(0, 3);
@@ -430,7 +430,7 @@ let getDoctorForFeedbackPage = (id) => {
         try {
             let doctor = await db.User.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'name', 'avatar' ]
+                attributes: ['id', 'name', 'avatar']
             });
             if (!doctor) {
                 reject(`Can't get feedback with doctorId=${id}`);
@@ -455,7 +455,7 @@ let createFeedback = (data) => {
                     phone: phone,
                     statusId: statusSuccessId
                 },
-                attributes: [ 'name', 'timeBooking', 'dateBooking' ]
+                attributes: ['name', 'timeBooking', 'dateBooking']
             });
 
             if (patient) {

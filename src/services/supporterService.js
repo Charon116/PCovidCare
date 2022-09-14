@@ -7,7 +7,7 @@ let getAllPosts = () => {
     return new Promise((async (resolve, reject) => {
         try {
             let posts = await db.Post.findAll({
-                attributes: [ 'id', 'title', 'writerId', 'createdAt' ],
+                attributes: ['id', 'title', 'writerId', 'createdAt'],
             });
             await Promise.all(posts.map(async (post) => {
                 let supporter = await helper.getSupporterById(post.writerId);
@@ -54,7 +54,7 @@ let getDetailPostPage = (id) => {
         try {
             let post = await db.Post.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'title', 'contentHTML', 'contentMarkdown', 'forDoctorId', 'forSpecializationId', 'forClinicId' ]
+                attributes: ['id', 'title', 'contentHTML', 'contentMarkdown', 'forDoctorId', 'forSpecializationId', 'forClinicId']
             });
             if (!post) {
                 reject(`Can't get post with id=${id}`);
@@ -70,7 +70,7 @@ let getAllSupporters = () => {
     return new Promise(async (resolve, reject) => {
         try {
             let supporters = await db.User.findAll({
-                where: { roleId: 3 }
+                where: { RoleId: 3 }
             });
 
             resolve(supporters);
@@ -90,9 +90,9 @@ let getPostsPagination = (page, limit, role) => {
                 posts = await db.Post.findAndCountAll({
                     offset: (page - 1) * limit,
                     limit: limit,
-                    attributes: [ 'id', 'title', 'contentMarkdown', 'contentHTML', 'createdAt', 'writerId' ],
+                    attributes: ['id', 'title', 'contentMarkdown', 'contentHTML', 'createdAt', 'writerId'],
                     order: [
-                        [ 'createdAt', 'DESC' ]
+                        ['createdAt', 'DESC']
                     ],
                 });
             } else {
@@ -104,9 +104,9 @@ let getPostsPagination = (page, limit, role) => {
                     },
                     offset: (page - 1) * limit,
                     limit: limit,
-                    attributes: [ 'id', 'title', 'contentMarkdown', 'contentHTML', 'createdAt', 'writerId' ],
+                    attributes: ['id', 'title', 'contentMarkdown', 'contentHTML', 'createdAt', 'writerId'],
                     order: [
-                        [ 'createdAt', 'DESC' ]
+                        ['createdAt', 'DESC']
                     ],
                 });
             }
@@ -136,7 +136,7 @@ let deletePostById = (id) => {
         try {
             let post = await db.Post.findOne({
                 where: { id: id },
-                attributes: [ 'id', 'forDoctorId', 'forSpecializationId', 'forClinicId' ]
+                attributes: ['id', 'forDoctorId', 'forSpecializationId', 'forClinicId']
             });
 
             // chỉ delete bài đăng y khoa
@@ -158,7 +158,7 @@ let putUpdatePost = (item) => {
         try {
             let post = await db.Post.findOne({
                 where: { id: item.id },
-                attributes: [ 'id', 'forDoctorId', 'forSpecializationId', 'forClinicId' ]
+                attributes: ['id', 'forDoctorId', 'forSpecializationId', 'forClinicId']
             });
             await post.update(item);
 
