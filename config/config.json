@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "noqcttyfkbtyhg",
-    "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
-    "database": "dardbkepg8the",
-    "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
-    "dialect": "postgres",
+    "username": "be310264b84b60",
+    "password": "cd55680e",
+    "database": "heroku_24390f8452b411a",
+    "host": "us-cdbr-east-06.cleardb.net",
+    "dialect": "mysql",
     "logging": false,
     "query": {
       "raw": true
@@ -23,11 +23,11 @@
     "operatorsAliases": 0
   },
   "production": {
-    "username": "noqcttyfkbtyhg",
-    "password": "e9a0534c467a22a035aaddeeb9fff0bbf948f53b915188957ca1d16fc0eafa54",
-    "database": "dardbkepg8the",
-    "host": "ec2-54-86-106-48.compute-1.amazonaws.com",
-    "dialect": "postgres",
+    "username": "be310264b84b60",
+    "password": "cd55680e",
+    "database": "heroku_24390f8452b411a",
+    "host": "us-cdbr-east-06.cleardb.net",
+    "dialect": "mysql",
     "logging": false,
     "query": {
       "raw": true

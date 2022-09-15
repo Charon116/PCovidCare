@@ -1,38 +1,44 @@
 {
-    "development": {
-        "username": "root",
-        "password": "05081964",
-        "database": "doctorcare",
-        "host": "localhost",
-        "dialect": "mysql",
-        "logging": false,
-        "query": {
-            "raw": true
-        },
-        "operatorsAliases": 0,
-        "dialectOptions": {
-            "dateStrings": true,
-            "typeCast": true,
-            "timezone": "+07:00",
-            "ssl" : {
-                "require": true,
-                "rejectUnauthorized": false
-            }
-        },
-        "timezone": "+07:00"
+  "development": {
+    "username": "be310264b84b60",
+    "password": "cd55680e",
+    "database": "heroku_24390f8452b411a",
+    "host": "us-cdbr-east-06.cleardb.net",
+    "dialect": "mysql",
+    "logging": false,
+    "query": {
+      "raw": true
     },
-    "test": {
-        "dialect": "mysql",
-        "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
     },
-    "production": {
-        "dialect": "mysql",
-        "operatorsAliases": 0,
-        "dialectOptions": {
-            "dateStrings": true,
-            "typeCast": true,
-            "timezone": "+07:00"
-        },
-        "timezone": "+07:00"
-    }
+    "timezone": "+07:00"
+  },
+  "test": {
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  },
+  "production": {
+    "username": "be310264b84b60",
+    "password": "cd55680e",
+    "database": "heroku_24390f8452b411a",
+    "host": "us-cdbr-east-06.cleardb.net",
+    "dialect": "mysql",
+    "logging": false,
+    "query": {
+      "raw": true
+    },
+    "operatorsAliases": 0,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    },
+    "timezone": "+07:00"
+  }
 }
