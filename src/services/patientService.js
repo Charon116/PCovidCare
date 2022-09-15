@@ -208,7 +208,6 @@ let createNewPatient = (data) => {
                 } else {
                     resolve("Max booking")
                 }
-
             });
 
         } catch (e) {

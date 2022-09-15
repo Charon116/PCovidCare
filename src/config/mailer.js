@@ -3,12 +3,12 @@ import nodeMailer from "nodemailer";
 require('dotenv').config();
 
 let transporter = nodeMailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
+    host: "smtp.gmail.com",
+    port: 2525,
     secure: false, // use SSL-TLS
     auth: {
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD
+        user: "lcquang116@gmail.com",
+        pass: "smcbfghlbkqcsgqp"
     },
     tls: {
         rejectUnauthorized: false
@@ -17,7 +17,7 @@ let transporter = nodeMailer.createTransport({
 
 let sendEmailNormal = (to, subject, htmlContent) => {
     let options = {
-        from: process.env.MAIL_USERNAME,
+        from: "lcquang116@gmail.com",
         to: to,
         subject: subject,
         html: htmlContent
@@ -27,7 +27,7 @@ let sendEmailNormal = (to, subject, htmlContent) => {
 
 let sendEmailWithAttachment = (to, subject, htmlContent, filename, path) => {
         let options = {
-            from: process.env.MAIL_USERNAME,
+            from: "lcquang116@gmail.com",
             to: to,
             subject: subject,
             html: htmlContent,

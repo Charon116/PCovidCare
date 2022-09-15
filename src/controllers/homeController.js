@@ -216,7 +216,6 @@ let postBookingDoctorPageNormal = (req, res) => {
         }
 
         try {
-
             let item = req.body;
             let imageOldForm = req.files;
             let image = {};
