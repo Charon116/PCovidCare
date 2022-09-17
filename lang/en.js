@@ -6,55 +6,51 @@ export const transValidation = {
 };
 
 export const transMailBookingNew = {
-    subject: "Email notification of booking progress at P-Covid Care",
+    subject: "Thông báo email về tiến trình đặt lịch khám tại P-Covid Care",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at P-Covid Care's system </h3>
-        <h4>Information for booked appointment:</h4>
-        <div>Doctor's name: ${data.doctor} </div>
-        <div>Time: ${data.time}</div>
-        <div>Date: ${data.date}</div>
-        <div>Status: <b> Pending - A new appointment is waiting for confirmation</b></div>
-        <h4>P-Covid Care system will automatically send email notification when confirmed appointment is complete. Thank you !</h4>`;
+        return `<h3>Cảm ơn bạn đã đặt lịch khám tại hệ thống của P-Covid Care </h3>
+        <h4>Thông tin cho cuộc hẹn đã đặt:</h4>
+        <div>Tên bác sĩ:: ${data.doctor} </div>
+        <div>Thời gian: ${data.time}</div>
+        <div>Ngày: ${data.date}</div>
+        <div>Trạng thái: <b> Đang chờ xử lý - Lịch hẹn mới đang chờ xác nhận</b></div>
+        <h4>Hệ thống P-Covid Care sẽ tự động gửi email thông báo khi cuộc hẹn được xác nhận hoàn tất. Cảm ơn bạn !</h4>`;
     },
 };
 
 export const transMailBookingFailed = {
-    subject: "Email notification of booking progress at P-Covid Care",
+    subject: "Thông báo email về tiến trình đặt lịch khám tại P-Covid Care",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at P-Covid Care's system  </h3>
-        <h4>Information for booked appointment:</h4>
-        <div>Doctor's name: ${data.doctor} </div>
-        <div>Time: ${data.time}</div>
-        <div>Date: ${data.date}</div>
-        <div>Status: <b>Cancel - ${data.reason}</b></div>
-        <h4>If you notice errors from this email, please contact the support operator: <b> 911 911 </b>. Thank you !</h4>`;
+        return `<h3>Cảm ơn bạn đã đặt lịch khám tại hệ thống của P-Covid Care  </h3>
+        <h4>Thông tin cho cuộc hẹn đã đặt:</h4>
+        <div>Tên bác sĩ:: ${data.doctor} </div>
+        <div>Thời gian: ${data.time}</div>
+        <div>Ngày: ${data.date}</div>
+        <div>Trạng thái: <b>Huỷ - ${data.reason}</b></div>
+        <h4>Nếu bạn nhận thấy lỗi từ email này, vui lòng liên hệ với nhà điều hành hỗ trợ: <b> 0708118749 </b>. Cảm ơn bạn !</h4>`;
     },
 };
 
 export const transMailBookingSuccess = {
-    subject: "Email notification of booking progress at P-Covid Care",
+    subject: "Thông báo email về tiến trình đặt lịch khám tại P-Covid Care",
     template: (data) => {
-        return `<h3>Thank you for booking an appointment at P-Covid Care's system </h3>
-        <h4>Information for booked appointment:</h4>
-        <div>Doctor's name: ${data.doctor} </div>
-        <div>Time: ${data.time}</div>
-        <div>Date: ${data.date}</div>
-        <div>Status: <b>Succeed</b></div>
-        <h4>Thank you very much !</h4>`;
+        return `<h3>Cảm ơn bạn đã đặt lịch khám tại hệ thống của P-Covid Care </h3>
+        <h4>Thông tin cho cuộc hẹn đã đặt:</h4>
+        <div>Tên bác sĩ:: ${data.doctor} </div>
+        <div>Thời gian: ${data.time}</div>
+        <div>Ngày: ${data.date}</div>
+        <div>Trạng thái: <b>Thành công</b></div>
+        <h4>Cảm ơn rất nhiều !</h4>`;
     },
 };
 
 export const transMailRemedy= {
-    subject: "Email sending the medical invoice from the doctor",
+    subject: "Email gửi hóa đơn y tế từ bác sĩ ",
     template: (data) => {
-        return `<h3>Thank you for your trust in booking a medical examination in DoctorCare's system.</h3>
-        After you have seen the doctor's office <b> ${data.doctor} </b>, you can review the billing details from this email attachment. </h4>
-        <div>The password for extracting attachments has the following form: <i>Full name without accent - 3 digits first phone number - last 2 digits of your birth year</div>
-        <br>
-        <div>For example: Full name: Group26, with the registered phone number: 0123456789 and born: 1910, the extracted password is: <b> group26-012-10 </b> </div>
-        <br>
-        <div>In the event of neither receiving attachments nor decompressing, please contact the support operator<b>911 911</b></div>
-        <h4>Thank you !</h4>`;
+        return `<h3>Cảm ơn bạn đã tin tưởng đặt lịch khám bệnh tại hệ thống của DoctorCare.</h3>
+        Sau khi bạn đã đến phòng khám của bác sĩ <b> ${data.doctor} </b>, bạn có thể xem lại chi tiết thanh toán từ tệp đính kèm email này. </h4>
+        <div>Trong trường hợp không nhận được tệp đính kèm hoặc không giải nén, vui lòng liên hệ với nhà điều hành hỗ trợ<b>0708118749</b></div>
+        <h4>Cảm ơn rất nhiều !</h4>`;
     },
 };
 
