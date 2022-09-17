@@ -382,19 +382,19 @@ let sendFormsForPatient = (id, files) => {
                 where: { id: patient.doctorId },
                 attributes: [ 'name', 'avatar' ]
             });
-            let name = removeAccents(patient.name).split(' ').join('').toLowerCase();
-            let phone = patient.phone.substring(0, 3);
-            let year = patient.year.substring(2, 4);
-            let password = `${name}-${phone}-${year}`;
+            // let name = removeAccents(patient.name).split(' ').join('').toLowerCase();
+            // let phone = patient.phone.substring(0, 3);
+            // let year = patient.year.substring(2, 4);
+            // let password = `${name}-${phone}-${year}`;
             let mz = new Minizip();
             files.forEach((file) => {
                 let fileSendToPatient = fs.readFileSync(file.path);
-                mz.append(file.originalname, fileSendToPatient, { password: password });
+                mz.append(file.originalname, fileSendToPatient);
             });
             let nameZip = `${Date.now()}-patientId-${id}.zip`;
             let pathZip = `${PATH_ZIP}/${nameZip}`;
             fs.writeFileSync(pathZip, new Buffer(mz.zip()));
-            let filename = `Information-invoice-${patient.dateBooking}.zip`;
+            let filename = `Thông tin hoá đơn và giấy khám-${patient.dateBooking}.zip`;
             let data = { doctor: doctor.name };
             await mailer.sendEmailWithAttachment(patient.email, transMailRemedy.subject, transMailRemedy.template(data), filename, pathZip);
             await patient.update({
