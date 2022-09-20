@@ -31,18 +31,18 @@
                     <th>Giới tính</th>
                     <th>Chức năng</th>
                 </tr>
-                <% if(appointments['08:00 - 09:00']) { %>
+                <% if(appointments['08:00 - 08:30']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['08:00 - 09:00'].length + 1 %>"><b>8h - 9h</b></td>
+                        <td rowspan="<%= appointments['08:00 - 08:30'].length + 1 %>"><b>8h - 8h30</b></td>
                     </tr>
-                    <% appointments['08:00 - 09:00'].forEach(function(x, index) { %>
+                    <% appointments['08:00 - 08:30'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Male
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -69,18 +69,56 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['09:00 - 10:00']) { %>
+                <% if(appointments['08:30 - 09:00']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['09:00 - 10:00'].length + 1 %>"><b>9h - 10h</b></td>
+                        <td rowspan="<%= appointments['08:30 - 09:00'].length + 1 %>"><b>8h30 - 9h</b></td>
                     </tr>
-                    <% appointments['09:00 - 10:00'].forEach(function(x, index) { %>
+                    <% appointments['08:30 - 09:00'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Male
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td class="mw-100 w-25">
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['09:00 - 09:30']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['09:00 - 09:30'].length + 1 %>"><b>9h - 9h30</b></td>
+                    </tr>
+                    <% appointments['09:00 - 09:30'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -108,56 +146,18 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['10:00 - 11:00']) { %>
+                <% if(appointments['09:30 - 10:00']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['10:00 - 11:00'].length + 1 %>"><b>10h - 11h</b></td>
+                        <td rowspan="<%= appointments['09:30 - 10:00'].length + 1 %>"><b>9h30 - 10h</b></td>
                     </tr>
-                    <% appointments['10:00 - 11:00'].forEach(function(x, index) { %>
+                    <% appointments['09:30 - 10:00'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Female
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
-                                <% } %>
-                            </td>
-
-                            <td>
-                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
-                                        class="btn btn-info doctor-view-detail">Chi tiết
-                                </button>
-                                <button title="Send the bill to the patient who has completed the examination" type="button"
-                                        data-patient-id="<%= x.id %>"
-                                        data-is-send-forms="<%= x.isSentForms %>"
-                                        class="btn btn-primary doctor-send-forms">
-                                    Gửi hoá đơn 
-                                </button>
-                                <% if(x.isSentForms){ %>
-                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
-                                       aria-hidden="true"></i>
-                                <% } else { %>
-                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
-                                       aria-hidden="true"></i>
-                                <% } %>
-                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
-                                   title="Cancellation of examination with the patient"></i>
-                            </td>
-                        </tr>
-                    <% }) %>
-                <% } %>
-                <% if(appointments['11:00 - 12:00']) { %>
-                    <tr>
-                        <td rowspan="<%= appointments['11:00 - 12:00'].length + 1 %>"><b>11h - 12h</b></td>
-                    </tr>
-                    <% appointments['11:00 - 12:00'].forEach(function(x, index) { %>
-                        <tr>
-                            <td><%= index + 1 %></td>
-                            <td><%= x.name %></td>
-                            <td>
-                                <% if(x.gender === 'male') { %> Female
-                                <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -185,18 +185,94 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['13:00 - 14:00']) { %>
+                <% if(appointments['10:00 - 10:30']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['13:00 - 14:00'].length + 1 %>"><b>13h - 14h</b></td>
+                        <td rowspan="<%= appointments['10:00 - 10:30'].length + 1 %>"><b>10h - 10h30</b></td>
                     </tr>
-                    <% appointments['13:00 - 14:00'].forEach(function(x, index) { %>
+                    <% appointments['10:00 - 10:30'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Female
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['10:30 - 11:00']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['10:30 - 11:00'].length + 1 %>"><b>10h30 - 11h</b></td>
+                    </tr>
+                    <% appointments['10:30 - 11:00'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['11:00 - 11:30']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['11:00 - 11:30'].length + 1 %>"><b>11h - 11h30</b></td>
+                    </tr>
+                    <% appointments['11:00 - 11:30'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -224,18 +300,18 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['14:00 - 15:00']) { %>
+                <% if(appointments['11:30 - 12:00']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['14:00 - 15:00'].length + 1 %>"><b>14h - 15h</b></td>
+                        <td rowspan="<%= appointments['11:30 - 12:00'].length + 1 %>"><b>11h30 - 12h</b></td>
                     </tr>
-                    <% appointments['14:00 - 15:00'].forEach(function(x, index) { %>
+                    <% appointments['11:30 - 12:00'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Female
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -263,18 +339,18 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['15:00 - 16:00']) { %>
+                <% if(appointments['13:00 - 13:30']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['15:00 - 16:00'].length + 1 %>"><b>15h - 16h</b></td>
+                        <td rowspan="<%= appointments['13:00 - 13:30'].length + 1 %>"><b>13h - 13h30</b></td>
                     </tr>
-                    <% appointments['15:00 - 16:00'].forEach(function(x, index) { %>
+                    <% appointments['13:00 - 13:30'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Female
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
 
@@ -302,18 +378,252 @@
                         </tr>
                     <% }) %>
                 <% } %>
-                <% if(appointments['16:00 - 17:00']) { %>
+                <% if(appointments['13:30 - 14:00']) { %>
                     <tr>
-                        <td rowspan="<%= appointments['16:00 - 17:00'].length + 1 %>"><b>16h - 17h</b></td>
+                        <td rowspan="<%= appointments['13:30 - 14:00'].length + 1 %>"><b>13h30 - 14h</b></td>
                     </tr>
-                    <% appointments['16:00 - 17:00'].forEach(function(x, index) { %>
+                    <% appointments['13:30 - 14:00'].forEach(function(x, index) { %>
                         <tr>
                             <td><%= index + 1 %></td>
                             <td><%= x.name %></td>
                             <td>
-                                <% if(x.gender === 'male') { %> Female
+                                <% if(x.gender === 'male') { %> Nam
                                 <% } %>
-                                <% if(x.gender === 'female') { %> Female
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['14:00 - 14:30']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['14:00 - 14:30'].length + 1 %>"><b>14h - 14h30</b></td>
+                    </tr>
+                    <% appointments['14:00 - 14:30'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['14:30 - 15:00']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['14:30 - 15:00'].length + 1 %>"><b>14h30 - 15h</b></td>
+                    </tr>
+                    <% appointments['14:30 - 15:00'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['15:00 - 15:30']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['15:00 - 15:30'].length + 1 %>"><b>15h - 15h30</b></td>
+                    </tr>
+                    <% appointments['15:00 - 15:30'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['15:30 - 16:00']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['15:30 - 16:00'].length + 1 %>"><b>15h30 - 16h</b></td>
+                    </tr>
+                    <% appointments['15:30 - 16:00'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['16:00 - 16:30']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['16:00 - 16:30'].length + 1 %>"><b>16h - 16h30</b></td>
+                    </tr>
+                    <% appointments['16:00 - 16:30'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
+                                <% } %>
+                            </td>
+
+                            <td>
+                                <button title="View patient's information" type="button" data-patient-id="<%= x.id %>"
+                                        class="btn btn-info doctor-view-detail">Chi tiết
+                                </button>
+                                <button title="Send the bill to the patient who has completed the examination" type="button"
+                                        data-patient-id="<%= x.id %>"
+                                        data-is-send-forms="<%= x.isSentForms %>"
+                                        class="btn btn-primary doctor-send-forms">
+                                    Gửi hoá đơn 
+                                </button>
+                                <% if(x.isSentForms){ %>
+                                    <i title="Invoice sent" data-patient-id="<%= x.id %>" class="fa fa-check-circle" style="color: #36b9cc"
+                                       aria-hidden="true"></i>
+                                <% } else { %>
+                                    <i title="Have not sent an invoice" data-patient-id="<%= x.id %>" class="fa fa-exclamation-circle" style="color: #f6c23e"
+                                       aria-hidden="true"></i>
+                                <% } %>
+                                <i class="fa fa-trash-o" style="cursor: pointer" data-patient-id="<%= x.id %>" aria-hidden="true"
+                                   title="Cancellation of examination with the patient"></i>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+                <% if(appointments['16:30 - 17:00']) { %>
+                    <tr>
+                        <td rowspan="<%= appointments['16:30 - 17:00'].length + 1 %>"><b>16h30 - 17h</b></td>
+                    </tr>
+                    <% appointments['16:30 - 17:00'].forEach(function(x, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= x.name %></td>
+                            <td>
+                                <% if(x.gender === 'male') { %> Nam
+                                <% } %>
+                                <% if(x.gender === 'female') { %> Nữ
                                 <% } %>
                             </td>
                             <td>

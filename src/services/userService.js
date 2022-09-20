@@ -263,8 +263,8 @@ let getInfoDoctorChart = (month) => {
 let createAllDoctorsSchedule = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let timeArr = ['08:00 - 09:00', '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
-                '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00'
+            let timeArr = ['08:00 - 08:30','08:30 - 09:00', '09:00 - 09:30','09:30 - 10:00','10:00 - 10:30', '10:30 - 11:00','11:00 - 11:30', '11:30 - 12:00',
+                '13:00 - 13:30','13:30 - 14:00', '14:00 - 14:30','14:30 - 15:00', '15:00 - 15:30','15:30 - 16:00','16:00 - 16:30', '16:30 - 17:00'
             ]
             let threeDaySchedules = [];
             for (let i = 0; i < 3; i++) {
@@ -304,7 +304,7 @@ let createAllDoctorsSchedule = () => {
                                         doctorId: doctor.id,
                                         date: day,
                                         time: time,
-                                        maxBooking: 2,
+                                        maxBooking: 1,
                                         sumBooking: 0
                                     }
                                     await db.Schedule.create(schedule);
