@@ -714,7 +714,7 @@ function loadNewPatientsForSupporter() {
 
 function handleBtnNewPatientOk() {
     $("#tableNewPatients").on("click", ".btn-new-patient-ok", function (e) {
-        if (!confirm('Do you want to confirm admission of this patient?')) {
+        if (!confirm('Bạn có muốn xác nhận đơn đặt khám của bệnh nhân này không?')) {
             return
         }
         let countNew = +$('#count-new').text();
