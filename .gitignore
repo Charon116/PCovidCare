@@ -4,8 +4,8 @@
 /storage/*.key
 /vendor
 
-.env.backup
 .env
+.env.backup
 Homestead.json
 Homestead.yaml
 npm-debug.log

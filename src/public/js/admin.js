@@ -564,7 +564,6 @@ function handleBtnSchedule() {
 
         //check có class thì add new row, else try to remove
         if ($(`#${idBtn}`).hasClass("btn-css")) {
-
             let item = {
                 'date': date,
                 'time': time,
@@ -573,8 +572,8 @@ function handleBtnSchedule() {
             scheduleArr.push(item);
             $('#tableCreateSchedule tbody').append(
                 ` <tr id="row-${idBtn}">
-                         <td>${time}</td>
-                         <td>${date}</td>
+                        <td>${time}</td>
+                        <td>${date}</td>
                   </tr>`);
         } else {
             let count = -1;
