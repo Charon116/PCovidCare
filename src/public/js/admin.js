@@ -101,7 +101,7 @@ function handleCreateClinicWithoutFile(data) {
         url: `${window.location.origin}/admin/clinic/create-without-file`,
         data: data,
         success: function (data) {
-            alert('A new clinic is created successfully');
+            alert('Tạo phòng khám thành công!');
             window.location.href = `${window.location.origin}/users/manage/clinic`;
         },
         error: function (error) {
@@ -120,7 +120,7 @@ function handleCreateClinicNormal(formData) {
         contentType: false,
         processData: false,
         success: function (data) {
-            alert('A new clinic is created successfully');
+            alert('Tạo phòng khám thành công!');
             window.location.href = `${window.location.origin}/users/manage/clinic`;
         },
         error: function (error) {
@@ -168,7 +168,7 @@ function handleUpdateClinicNormal(formData) {
         contentType: false,
         processData: false,
         success: function (data) {
-            alert('Update succeeds');
+            alert('Cập nhật thành công!');
             window.location.href = `${window.location.origin}/users/manage/clinic`;
         },
         error: function (error) {
@@ -184,7 +184,7 @@ function handleUpdateClinicWithoutFile(data) {
         url: `${window.location.origin}/admin/clinic/update-without-file`,
         data: data,
         success: function (data) {
-            alert('Update succeed');
+            alert('Cập nhật thành công!');
             window.location.href = `${window.location.origin}/users/manage/clinic`;
         },
         error: function (error) {
@@ -254,7 +254,7 @@ function createNewDoctor() {
             url: `${window.location.origin}/admin/doctor/create`,
             data: data,
             success: function (data) {
-                alert('Create a new doctor succeeds');
+                alert('Tạo bác sĩ thành công!');
                 window.location.href = `${window.location.origin}/users/manage/doctor`;
             },
             error: function (error) {
@@ -363,7 +363,7 @@ function handleUpdateDoctorNormal(formData) {
         contentType: false,
         processData: false,
         success: function (data) {
-            alert('Update succeeds');
+            alert('Cập nhật thành công!');
             window.location.href = `${window.location.origin}/users/manage/doctor`;
         },
         error: function (error) {
@@ -379,7 +379,7 @@ function handleUpdateDoctorWithoutFile(data) {
         url: `${window.location.origin}/admin/doctor/update-without-file`,
         data: data,
         success: function (data) {
-            alert('Update succeeds');
+            alert('Cập nhật thành công!');
             window.location.href = `${window.location.origin}/users/manage/doctor`;
         },
         error: function (error) {
@@ -516,7 +516,7 @@ function updatePost(markdown, converter) {
             url: `${window.location.origin}/supporter/post/update`,
             data: data,
             success: function (data) {
-                alert('Update succeeds');
+                alert('Cập nhật thành công!');
                 window.location.href = `${window.location.origin}/supporter/manage/posts`;
             },
             error: function (error) {
